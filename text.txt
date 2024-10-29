@@ -1,0 +1,595 @@
+git config —global user.name «Your Name» — указать имя, которым будут подписаны коммиты
+
+git config — global user.email «your_email@mail.com» — указать электропочту, которая будет в описании коммитера
+git config —global core.autocrlf true — включить преобразование окончаний строк из CRLF в LF
+
+посмотреть настройки
+git config —list
+
+Для проекта
+git init — создает репозиторий в текущей папке
+
+git init folder-name — создает репоизторий в папке folder-name
+
+git add <путь до файла> — изменить статус файла на отслеживаемый
+git add . — добавить все файлы в отслеживаемые
+
+git commit -m «Name of commit» — зафиксировать в коммите проиндексированные изменения (закоммитить), добавить сообщение
+git commit -a -m «Name of commit» — проиндексировать отслеживаемые файлы (ТОЛЬКО отслеживаемые, но НЕ новые файлы) и закоммитить, добавить сообщение
+
+git log — посмотреть историю коммитов
+git log —oneline — красивый вид предыдущей команды
+git log —oneline —all —graph — показывает все векти
+
+git status — статус коммита
+git checkout — для смены ветки
+git checkout -b — добавить новую ветку
+
+git remote add origin «url git» — добавить удалённый репозиторий (с сокр. именем origin) с указанным URL
+git fetch origin — скачать все ветки с удаленного репозитория (с сокр. именем origin), но не сливать со своими ветками
+git fetch origin master — то же, но скачивается только указанная ветка
+
+git push origin master — отправить в удалённый репозиторий (с сокр. именем origin) данные своей ветки master
+git pull origin — влить изменения с удалённого репозитория (все ветки)
+git pull origin master — влить изменения с удалённого репозитория (только указанная ветка)
+
+
+|| (OR) = возвращает true если хотя бы один их операндов верный
+&& (AND) возвращает true только если оба операнда верные
+!true = возвращает противоположное значение
+> 
+<
+>=
+<=
+
+== (нестрогое равенство - значения приводятся к одному типу)
+=== (строгое равенство - при разных типах получаем false)
+!= (отрицание) 
+
+=== (строгое равенство с проверкой типа)
+!== (строгое неравенство с проверкой типа)
+
+Метод math
+
+math.floor() - округляет в меньшую
+math.ceil() - округляет в большую
+math.round() - округляет до ближайшего целого
+math.trunc() - удаляет дробную часть
+
+math.random() - возвращает случайное число от 0 до 1
+math.max(1, 2, 3) - возвращает большее число
+math.sqrt() - возвращает корень числа
+math.pow(3, 2) - возводит в степень
+
+\t - табуляция строк
+\n - перенос строки
+
+let a = "Hello my friend";
+
+console.log(a.toUpperCase()) - () вызывает функцию
+a.str[1] - получение символа (e)
+a.substring(1, 5) - получение символов между 1 (включительно) и 5
+a.replace('my", "your") - замена символов
+a.split('e') - переводит в массив. В скобках передаётся символ, разделяющий элементы массива ([H, llo my fri, nd])
+
+ПРЕОБРАЗОВАНИЕ ТИПОВ ДАННЫХ
+
+confirm("Сколько вам лет?") - возвращает булевые значения
+prompt('Сколько вам лет?') - возвращает ответ в виде строки. Отказ выводит тип  null
+
+console.log(String(123)); - глобальный метод String приводит тип данных в строку
+console.log(Number("123")); - глобальный метод Number приводит тип данных в число
+console.log(Boolean("123")); - глобальный метод Boolen приводит тип данных в булевые значения. Все выводятся как истина кроме "", null, undefined, NaN, false. Либо console.log(!!123) - то же самое
+console.log(1 + ""); - переводит числовой тип данных в строку путём добавления строки к результату. Он же -  console.log(1 .toString()) С ПРОБЕЛОМ!
+console.log(+"10") - унарный оператор + перед строкой переводит её в число, если значение можно вывести как число
+
+let str = prompt("Сколько вам лет?")
+let num =  str + 10 ВЕРНЁТ СТРОКУ. Используем let str = +prompt("Сколько вам лет?")
+
+let str = prompt("Сколько вам лет?")
+console.log(parseInt(str)); - метод parseInt возьмёт только цельночисловые значения забирая их из первых символов.
+Метод parseFloat(str); получит значение с плавающей точкой 
+
+console.log(parseInt('10ff', 2)) - второй необязательный параметр преобразует в двоичную систему. 16 - в шестнадцатеричную
+
+ВЕТВЛЕНИЕ
+
+let n = 10;
+if (n == 10) {
+    console.log(true);
+} else {
+    console.log(false)
+}
+
+let n = 12;
+if (n == 10) {
+    console.log(false);
+} else if (n == 12) {
+    console.log(true)
+}
+
+switch (n) {
+    case 3:
+        console.log(3);
+        break (останавливает работу switch)
+     case 4:
+        console.log(4);
+    case 10:
+        console.log(10);
+    default: 
+        console.log("Не верно ни одно значение")
+}
+switch (n) {
+    case 10:
+    case 11:
+    case 12:
+        console.log('OK')
+}
+    
+switch (true) {
+    case n > 10:
+        console.log('n > 10');
+        break
+    case n < 10:
+        console.log('n < 10')
+        break
+    default:
+         console.log("Не верно ни одно значение")
+}
+
+switch (true) {
+    case 5 < n && n < 10:
+        console.log('n > 10');
+        break
+    default:
+         console.log("Не верно ни одно значение")
+}
+
+ТЕРНАРНЫЙ ОПЕРАТОР 
+
+let result = n === 10 ? 1 : 2
+console.log(result)    Возвращает первое значение если истина и второе если нет
+
+n === 10 ? console.log(верно) : console.log(неверно)
+
+'use strict';  в первой строке использует только стандарты ES5
+
+ФУНКЦИИ
+
+// Полная функция
+
+function myFirstFunction() {
+    function function1() {
+        console.log('10');   
+    }
+    function function2() {
+        console.log('20');  
+    }
+    function function3() {
+        console.log('30'); 
+    }
+    function1();
+    function2();
+    function3();
+}
+myFirstFunction()
+
+// Укороченная функция с передачей аргументов
+
+function mySecondFunction() {
+    function step(str) {
+        console.log(str);       
+    }
+step('Первый');
+step('Второй');
+step('Третий');
+}
+mySecondFunction()
+
+// Укороченная функция с двумя параметрами
+
+function myThirdFunction() {
+    function step(index, str) {
+        console.log(index + ". " + str); 
+    }
+step(1, 'Первый');
+step(2, 'Второй');
+step(3, 'Третий');
+}
+myThirdFunction()
+
+// Укороченная функция с тремя параметрами
+
+function myFourthFunction() {
+        function step(index, number, str) {
+            console.log(index + ". " + number + " " + str);         
+    }
+step(1, 'Номер один', 'Первый');
+step(2, 'Номер два', 'Второй');
+step(3, 'Номер три', 'Третий');
+}
+myFourthFunction()
+
+// Функция типа function expression
+
+const myFifthFunction = function() {
+        const step = function(index, number, str) {
+            console.log(index + ". " + number + " " + str);         
+    }
+step(4, 'Номер один', 'Первый');
+step(5, 'Номер два', 'Второй');
+step(6, 'Номер три', 'Третий');
+}
+myFifthFunction()
+
+// Функция с объявленной переменной
+
+let res;
+
+const mySixthFunction = function(a, b) {
+    res = a + b;      
+}
+
+console.log(res); // до выполнения функции переменная выдаст undefined
+mySixthFunction(10, 20);
+console.log(res); // после выполнения функции у переменной есть значени
+
+// Функция с объявленной переменной и оператором return
+
+let count;
+
+const mySeventhFunction = function(a, b) {
+    return a + b;      // всё что написано после оператора return внутри функции не будет отработано
+}
+count = mySeventhFunction(20, 30);
+console.log(count);
+
+// Функция без переменных
+
+const myEithFunction = function(a, b) {
+    return a + b;     
+}
+console.log(myEithFunction(3, 5)); // функция вызывается и сразу возвращает результат
+
+// Функция с параметром по умолчанию
+
+const myNinthFunction = function(a, b = 10) {  // одному параметру задано значение по умолчанию. Задание второго аргумента приоритетней чем это значение
+    return a + b;     
+}
+console.log(myNinthFunction(3) + 10); // можно выполнять операции прямо в вызове функции
+
+// Функция с псевдомассивом arguments
+
+const myTenFunction = function(a, b = 10) {  // в вызове функции у нас только 2 параметра
+    console.log(arguments); // остальные можно получить в виде массива с псевдомассивом arguments
+    console.log(arguments[4]); // получить [x] аргумент по индексу
+    return a + b;     
+}
+console.log(myTenFunction(3, 4, 6, 45, 12, 74)); // 
+
+// Функция с callback
+
+const myElevenFunction = function(a, b, callback) {  // принимает 3 параметра
+    return a + callback(b);     // параметр 1 + результат коллбэка
+}
+const myCallbackFunction = function(num) {   // b передаётся в num
+    return num + 4;     // прородим операцию с num и возвращаем в виде callback
+}
+console.log(myElevenFunction(3, 12, myCallbackFunction)); // 
+
+// Анонимная функция без переменных
+
+const myTwelveFunction = function(a, b, callback) {  // принимает 3 параметра
+    return a + callback(b);     // параметр 1 + результат коллбэка
+}
+console.log(myTwelveFunction(10, 25, function(num) {   // создаём анонимную функцию прямо в выводе результата без записи в переменную
+    return num + 5;
+}));
+
+const money = 5000;
+const expences1 = 200;
+const expences2 = 300;
+
+const SumExpences = function(exp1, exp2) {
+    return exp1 + exp2;
+}
+const countTotal = function() {
+    return money - SumExpences(expences1, expences2);
+}
+console.log(countTotal());
+
+// то же самое с анонимной функцией
+
+const countTotal2 = function(count, call) {  // реально существует только одна функция
+    return count - call(expences1, expences2)
+}
+console.log(countTotal2(money, function(exp1, exp2) {   // вторая функция выполняется в виде анонимного коллбэка
+    return exp1 + exp2
+}));
+
+
+// callback с задержкой по времени
+
+const sendServer = function() {
+    setTimeout(function() {
+        console.log('Timeout');
+    }, 5000
+)}
+
+const sendNothing = function() {
+    console.log('А что происходит?');
+    
+}
+
+sendServer();
+sendNothing();
+
+// определяем нашу функцию с аргументом callback
+function some_function(arg1, arg2, callback) {
+    // переменная, генерирующая случайное число в интервале между arg1 и arg2
+    let my_number = Math.ceil(Math.random() * (arg1 - arg2) + arg2);
+    // теперь всё готово и  мы вызываем callback, куда передаём наш результат
+    callback(my_number);
+}
+// вызываем функцию
+some_function(10, 20, function (num) {
+    // эта анонимная функция выполнится после вызова callback-функции
+    console.log("callback called! " + num);
+});
+
+
+ЦИКЛЫ
+
+// Рекурсия
+
+const potato = 10;
+
+const feedPotato = function(potatoIndex) {
+     if (potatoIndex > 0) {
+        console.log('Картошка №'+ potatoIndex + ' почищена');
+        potatoIndex--;  // уменьшаем индекс на 1
+        feedPotato(potatoIndex);  // функция будет отрабатывать пока условие > 0 не будет выполнено
+     }  
+}
+
+feedPotato(potato);
+
+// Циклический оператор for
+
+const potato = 10;
+
+for (let i = 1; i < 11; i++) {  /* переменная i означает index и заменяет нам в цикле potatoIndex */
+    // первый параметр - начальное условие, второй - условие, по которому цикл будет выполняться, третий - действие, производимое каждую итерацию
+    console.log('Картошка №'+ i + ' почищена');
+}
+
+
+// циклический оператор while
+
+let potato = 10;
+
+while (potato > 0) {  // используем и меняем нашу переменную, не константу
+    console.log('Картошка №'+ potato + ' почищена')
+    potato--;
+}
+
+// циклический оператор do while
+
+let potato = 10;
+
+do { //возвращает true пока не выполнится условие
+     console.log('Картошка №'+ potato + ' почищена');
+     potato--;
+ }
+while (potato > 0)
+
+
+Объекты - тип данных, хранящий несколько значений
+
+Цикл for in 
+
+let obj = {
+    name: 'Nick',
+    age: 40,
+    student: false
+}
+
+for (let key in obj) {  // цикл for in перебирает объект столько раз, сколько в нем ключей
+    console.log('Ключ: ' + key + ' ' + 'Значение: ' + obj[key]);
+}
+
+console.log(Object.keys(obj)); // метод Object.keys() собирает в массив все ключи
+
+delete array[2]; // удаляет элемент массива с указанным индексом, при этом не пересматривая индекс - 2 останется "занятым"
+
+Массивы:
+
+let obj.age // напрочь удаляет age из объекта
+
+array[0] = 'cat';  // дать значение индексу массива
+array[10] = 'dog';
+
+array.length = 0; // можно вручную указывать длину массива, в данном случае очистить значения
+
+console.log(array);  // вывести весь массив
+console.log(array[0]);  // взять индекс из массива
+console.log(array.length);  // длина массива
+
+array.push('Qiwi'); // метод добавляет элемент массива в конец
+array.unshift('Peach', 'Mango'); // метод добавляет элемент массива в начало
+
+array.pop(); // удаляет элемент массива с конца и возвращает элемент console.log(array.pop())
+array.shift(); // удаляет элемент массива с конца и возвращает элемент
+
+let lastElement = array.shift(); // можно записать убранное из массива значение в переменную
+
+array.sort() // выстраивает элементы по алфавиту
+array.reverse() // меняет порядок чтения массива
+
+console.log(array.join()); // возвращает массив как строку, не меняя сам массив. Аргумент добавляет разделитель (по умолчанию запятая без пробелов)
+
+Цикл for of 
+
+let array = [1, 2, 3, 4, 5]
+
+for (let key of array) {
+    console.log(key); // цикл for of перебирает массив и выводит значения
+}
+
+delete array[2]; // удаляет элемент массива с указанным индексом, при этом не пересматривая индекс - 2 останется "занятым"
+
+Псевдомассив arguments
+
+const func = function (a, b, c) {
+    console.log(arguments); // псевдомассив - не имеет методов работы с массивом. Собирает в себя все аргументы, даже если они не переданы в параметры
+    console.log(a + b + c);
+    
+}
+func(2, 5, 8)
+
+// Добавление и удаление элементов
+
+// concat arr.concat(arg1, arg2 ...)
+
+// const newArr = books.concat({id: 5, name: 'Властелин Колец', author: 'Рональд Толкиен', price: 2400}) 
+// добавить новый объект в массив
+
+// const newArr = books.slice([2], [4]) 
+// копирует переданные элементы в новый массив 
+
+/* books.splice(2, 2) /* удаляет элементы: 1 аргумент - исходный индекс, 2 аргумент - конечный индекс
+Изменяет исходный массив. 3, 4 и так далее аргументами добавляются новые элементы */
+
+// Поиск элементов в массиве
+// Meтод find
+// const result = books.find(function(item, index, array) {
+//     return item.name === 'Задача трех тел'  
+// })
+// const result = books.find(function(item, index, array) {
+//     return item.id === 3
+// })
+// console.log(result);
+
+// Метод findIndex
+
+// const result = books.findIndex(function(item, index, array) {
+//     return item.id === 2
+// })
+// books.splice(result, 1)
+// console.log(books);
+
+// Перебор/Преобразование
+
+// Метод forEach
+// books.forEach(function(item) {
+//     item.price = item.price + 'RUB' // метод forEach перебирает и изменяет массив
+// })
+
+// const newArr = books.map(function(item) { // создаем новый массив
+// //    item.price = item.price + 'RUB'
+//     return item
+// })
+
+// Метод map
+// const newArr = books.map(function(item) { // копируем массив
+//     const newObj = {
+//         id: item.id, // можем получать из родительского массива только нужные данные или создавать новые 
+//         name: item.name
+//     }
+//     return newObj
+// })
+
+// Метод filter 
+// const newArr = books.filter(function(item) { // копируем массив
+//     return item.author === 'Адитья Бхарджава' // возвращаем те элементы которые пройдут проверку
+// })
+
+// Метод reduce
+// const result = books.reduce(function(sum, item) {
+//     return sum + item.price // первый аргумент - складываем в sum все item.price
+// }, 0)  // второй аргумент - индекс, с которого начинаем
+// 
+// const result = books.reduceRight(function(sum, item) {  // метод reduceRight читает аргументы справа налево, что важно в умножении
+//     return sum + item.price // первый аргумент - складываем в sum все item.price
+// }, 0)  // второй аргумент - индекс, с которого начинаем
+
+МЕТОДЫ РАБОТЫ С DOM
+
+a[1].remove() - удаляет выбранный элемент массива из вёрстки, оставляя его в ноде
+b.append(a[1]) - перемещает выбранный элемент в конец списка
+b.prepend(a[1]) - перемещает выбранный элемент в начало списка
+a.before(b) - меняет элементы местами до указанного индекса
+a.after(b) - меняет элементы местами после указанного индекса
+a.replaceWith(b) - полностью заменяет элемент другим. Также в () можно передать любое значение, например строку
+a.cloneNode(true) - полностью копирует ноду элемента вместе со значением
+a.classList.add('class') - добавляет элементу класс
+a.textContent('text') - меняет текстовое содержимое элемента
+a.innerHTML('<strong>text</strong>') - меняет текстовое содержимое элемента т добавляет тэги HTML
+document.createElement('li') - создаёт новый элемент с указанным тэгом
+a.insertAjacentText(аргумент, значение) - аргумент beforebegin - добавить значение на уровень выше элемента, afterend - на уровень ниже, beforeend - слева, afterbegin - справа
+a.insertAjacentElement(аргумент, элемент) - аргумент beforebegin - добавить указанный элемент на уровень выше элемента, afterend - на уровень ниже, beforeend - слева, afterbegin - справа
+a.insertAjacentHTML(аргумент, тэг) - аргумент beforebegin - добавить указанный тэг на уровень выше элемента, afterend - на уровень ниже, beforeend - слева, afterbegin - справа
+
+ОБРАБОТЧИКИ СОБЫТИЙ
+
+a.onclick = 'действие' - выполнет действие или функцию при клике на элемент. Обрабатывает только 1 функцию (или несколько внутри одной анонимной)
+a.addEventListener('arg1', 'arg2') - 1 аргумент - событие, 2-й аргумент - callback-функция. Отрабатывает несколько функций.
+a.removeEventListener('arg1', 'arg2') - удалить обработчик
+function(event или e) - передаётся как параметр в функцию, содержит  само событие
+
+АРГУМЕНТЫ для addEventListener 
+mouseup (события отжатой кнопки мыши), 
+mousedown(события нажатия мыши внутри объекта), 
+mousemove (события движения мыши), 
+mouseenter (нахождение мыши в объекте), 
+mouseleave (вывод мыши из объекта), 
+mouseover и mouseout (реагируют на вложенные элементы)
+contextMenu - обращается к меню по клику правой кнопкой мыши
+
+input (отслеживание состояния поля ввода, срабатывает с каждым новым ИЗМЕНЕНИЕМ ЗНАЧЕНИЯ)
+focus (постановка курсора в инпут)
+blur (момент потери фокуса)
+change (изменение значения + потеря фокуса)
+keydown, keyup - нажатие и отпускание клавиши
+
+event.preventDefault() - метод отменяет стандартное поведение объекта
+
+ПИШЕТСЯ В ФУНКЦИЮ
+
+event.target.value -отслеживает каждый символ в инпуте
+event.target.value - в вёрстку может выводить значение побуквенно
+event.target.classList.toggle('class') - добавляет/убирает класс
+
+event.stopPropagation() - метод отключает "прошивание" элементов при отслеживании
+
+СОБЫТИЯ МОЖНО ВЕШАТЬ БЕЗ ПЕРЕМЕННОЙ
+document.querySelector('.text').addEventListenet(change, callback-функции)
+
+ПОГРУЖЕНИЕ
+
+a.addEventListener('arg1', 'arg2', true) - запускает цепочку событий от родителя к дочернему элементу
+
+SESSION/LOCAL STORAGE
+
+localStorage - объект хранящий наши данные сессии до их удаления
+sessionStorage - объект, хранящий данные пока открыта вкладка
+localStorage.name = 'name' - мы можем добавлять или переопределять свойства объекта
+localStorage.setItem('ключ', 'значение') - добавляет пару ключ-значение
+localStorage.getItem('ключ') - выводит значение ключа
+localStorage.removeItem('ключ') - удаляет значение ключа
+localStorage.clear() - полностью очищает все свойства в объекте
+
+COOKIES
+
+document.cookies = 'name=Alex' - записывает пару ключ-значение в куки
+document.cookies = 'name=Alex; max-age=3600' - записывает пару ключ-значение и время действия куки
+document.cookies = 'name=Alex; expires=Tue, 17 Dec 2024 05:15:32 GMT' - записывает пару ключ-значение и дату удаления куки
+const date = new Date(2025, 05, 22, 14, 43, 12) - конструктор даты
+console.log(date.toUTCString()) - выводит дату в нужном для куки формате
+document.cookies = 'name=Alex; expires' + date.toUTCString() = выведет дату в нужном формате
+
+const user = {
+    name: 'Alex',
+    city: 'Moscow'
+}
+document.cookies = 'user=' + JSON.stringify(user) - переводит объект в строку
