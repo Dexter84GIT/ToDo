@@ -62,7 +62,12 @@ todoControl.addEventListener('submit', function(event) {
         render()
     }
 })
+console.log(getData);
 
-getData.forEach(item => {
-    render(item)
-})
+if (getData != null) {
+    getData.forEach(item => {
+        render(item)
+    })
+} else {
+    render()
+}
