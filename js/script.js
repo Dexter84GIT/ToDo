@@ -4,32 +4,26 @@ const todoControl = document.querySelector('.todo-control')
 const headerInput = document.querySelector('.header-input')
 const todoList = document.querySelector('.todo-list')
 const todoCompleted = document.querySelector('.todo-completed')
-const todoData = []
-const returnData = function() {
-    const returnToDo = {}
-    let myData = localStorage.getItem("todoData")
-    let returnMyData  = JSON.parse(myData) 
-    console.log(returnMyData);
-    
-    if (returnMyData = null) {
-        render()
-    } else {
-        returnMyData.forEach(function() {
-            todoData.push(returnToDo)
-        })
-        render()
-    }
+let todoData
+if (localStorage.getItem('todoData')) {
+    todoData = JSON.parse(localStorage.getItem('todoData'))
+} else {
+    todoData = []
 }
-returnData()
-const render = function() {
 
+const setData = function() {
+    localStorage.setItem('todoData', JSON.stringify(todoData))
+} 
+const getData = JSON.parse(localStorage.getItem('todoData'))
+
+const render = function() {
     todoList.innerHTML = ''
     todoCompleted.innerHTML = ''
     todoData.forEach(function(item) {
         const li = document.createElement('li')
-
-        localStorage.setItem("todoData", JSON.stringify(todoData))
-        
+        console.log(todoData);
+        setData()
+       
         li.classList.add('todo-item')
         li.innerHTML = '<span class="text-todo">' + item.text + '</span>' +
         '<div class="todo-buttons">' +
@@ -44,10 +38,11 @@ const render = function() {
             li.querySelector('.todo-remove').addEventListener('click', function() {
                 li.remove()
                 todoData.splice(li, 1)
+                setData()
             })
             li.querySelector('.todo-complete').addEventListener('click', function () { 
                 item.completed = !item.completed
-            render()
+                render()
          })
     })
 }
@@ -66,4 +61,8 @@ todoControl.addEventListener('submit', function(event) {
     } else {
         render()
     }
+})
+
+getData.forEach(item => {
+    render(item)
 })
